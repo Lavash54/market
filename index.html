@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="jquery.growl.css">
+    <title>Задание по блочной верстке</title>
+</head>
+<body>
+    <div class="layout">
+        <div class="product">
+
+                <div class="product_preview">
+                    <div class="product_preview-left">
+                        <img src="./img/2.png">
+                        <img src="./img/3.png">
+                        <img src="./img/4.png">
+                        <div class="product_preview-down"></div>
+                    </div>
+                    <div class="product_preview-right">
+                        <img src="./img/1.png"width = "340px" height = "492px">
+                    </div>
+                </div>
+
+            <div class="product_description">
+                <h2 class="product_title">рубашка medicine</h2>
+
+                <div class="product_categories">
+                    <a href="#">Рубашки Medicine</a>
+                    <a href="#">Все модели Medicine</a>
+                    <a href="#">Рубашки</a>
+                </div>
+
+                <div class="product_price">
+                    <div class="product_price-actual">
+                        <span class="product_price-old">2 699</span>
+                        <span class="product_price-current">2 499 ₽</span>
+                    </div>
+                    <div class="product_price-discount">
+                        <span class="product_discount-value">2 227 ₽</span>
+                        <span class="product_discount-text">- с промокодом</span>
+                    </div>
+                </div>
+
+                <div class="product_info">
+                    <div class="product_info-item">
+                        <img src="./img/check.png" alt="#"/>
+                        В наличии в магазине  <a href="#">Lamoda </a>
+                    </div>
+                    <div class="product_info-item">
+                        <img src="./img/car.png" alt="#"/>
+                        Бесплатная доставка
+                    </div>
+                </div>
+
+                <div class="product_action">
+
+                    <div id="product_basket"></div>
+
+                    <div id="counter">
+                        <input type="button" id="buttonCountMinus" value="-">
+                        <div id="buttonCountNumber">1</div>
+                        <input type="button" id="buttonCountPlus" value="+">
+                    </div>
+                    <button class="custom-btn custom-btn--blue">в корзину</button>
+                    <button class="custom-btn">в избранное</button>
+                </div>
+
+                <div class="product_text">
+                    <p>Рубашка Medicine выполнена из вискозной ткани с клетчатым узором.
+                    Детали: прямой край, отложной воротник; планка и манжеты на
+                    поговицах; кармар на груди.
+                    </p>
+                </div>
+
+                <div class="product_share">
+                    <span ckass="product_share-title">Поделиться: </span>
+                    <div class="product_share-list">
+                        <a href="#">
+                            <img src="./img/vk.png" alt="#"/>
+                        </a>
+                        <a href="#">
+                            <img src="./img/google-plus.png" alt="#"/>
+                        </a>
+                        <a href="#">
+                            <img src="./img/facebook.png" alt="#"/>
+                        </a>
+                        <a href="#">
+                            <img src="./img/twitter.png" alt="#"/>
+                        </a>
+                        <a href="#">
+                        <span class="product_share-count">123</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery.growl.js"></script>
+
+<script>
+    $(".product_preview-left img").mouseover(function() {
+        let src = $(this).attr("src");
+        if(src == "./img/3.png"){
+            src = "./img/1.png"
+            $(".product_preview-right img").attr("src", src);
+        } else {
+            $(".product_preview-right img").attr("src", src);
+        }
+    })
+
+    let count = $("#buttonCountNumber").text();
+    $("#buttonCountMinus").css("color", "#d9d9d9");
+
+    $("#buttonCountMinus").click(function(){
+            if(count == 1){
+                $("#buttonCountNumber").text(count);
+            }else {
+                count--;
+                $("#buttonCountNumber").text(count);
+                if(count == 1){
+                    $("#buttonCountMinus").css("color", "#d9d9d9");
+                }
+            }
+        })
+        $("#buttonCountPlus").click(function(){
+            count++;
+            $("#buttonCountNumber").text(count);
+            $("#buttonCountMinus").css("color", "#000");
+        })
+
+        $(".custom-btn--blue").click(function(){
+
+            
+
+            if(count == 1){
+                $.growl({
+            title:"Корзина",
+            message:"Добавлен "+count+" товар"});
+            } else if (count >= 2 && count < 5 ){
+                $.growl({
+            title:"Корзина",
+            message:"Добавлено "+count+" товара"});
+            } else {
+                $.growl({
+            title:"Корзина",
+            message:"Добавлено "+count+" товаров"});
+            }
+            count = 1;
+            $(".product_basket-count").text(count);
+        })
+
+</script>
+</script>
+</html>

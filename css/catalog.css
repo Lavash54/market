@@ -1,0 +1,29 @@
+.card {
+    height: 300px;
+}
+
+.card_block{
+   margin-top: 15px;
+   position: relative;
+   border: 1px solid #CBCBCB; 
+   float: left; 
+   width: 200px; 
+   margin-right: 20px;
+   background-color: white;
+   display: flex;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.card_name{
+    font-size: 20px;
+    padding-left: 15px;
+}
+.card_a{
+    position: absolute;
+    top: 68%;
+    
+    padding: 6px 6px 4px;
+    border-radius: 50%;
+}
